@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('Pull') {
       steps {
         git(url: 'https://github.com/SakinaZilat/AlmarssadPro.git', branch: 'master', changelog: true)
       }
