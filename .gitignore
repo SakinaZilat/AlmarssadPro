@@ -1,5 +1,10 @@
-/.settings/*
-/target/**
+/target/
 /.classpath
 /.project
-/almarssadpro.log
+/.springBeans
+/.settings/
+/logs/
+/bin/
+/data/
+/.directory
+/bin/
