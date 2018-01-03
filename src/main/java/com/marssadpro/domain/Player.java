@@ -49,12 +49,12 @@ public class Player {
     @Column(name = "age", precision = 19)
     private Integer age;
     
-    @Column(name = "birthDate", nullable = false)
+    @Column(name = "birthDate", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birthDate;
 
-    @Column(name = "registredDate", nullable = false)
+    @Column(name = "registredDate", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date registredDate;
