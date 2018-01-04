@@ -40,11 +40,17 @@ public class Player {
     @Column(name = "birthPlace", length = 255, nullable = false)
     private String birthPlace;
     
+    @Column(name = "birthCountry", length = 255, nullable = true)
+    private String birthCountry;
+    
     @Column(name = "nationality", length = 255, nullable = false)
     private String nationality;
     
     @Column(name = "nowClub", length = 255, nullable = false)
     private String nowClub;
+    
+    @Column(name = "clubCountry", length = 255, nullable = true)
+    private String clubCountry;
     
     @Column(name = "age", precision = 19)
     private Integer age;
@@ -191,6 +197,43 @@ public class Player {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+
+
+
+	public String getBirthCountry() {
+		return birthCountry;
+	}
+
+
+
+	public void setBirthCountry(String birthCountry) {
+		this.birthCountry = birthCountry;
+	}
+
+
+
+	public String getClubCountry() {
+		return clubCountry;
+	}
+
+
+
+	public void setClubCountry(String clubCountry) {
+		this.clubCountry = clubCountry;
+	}
+
+
+
+	public Boolean getApproved() {
+		return approved;
+	}
+
+
+
+	public void setApproved(Boolean approved) {
+		this.approved = approved;
+	}
+	
 	
 	
   

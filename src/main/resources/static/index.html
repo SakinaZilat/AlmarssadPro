@@ -2,7 +2,7 @@
 <html ng-app="myApp">
 
 <head>
-<title>AngularJS</title>
+<title>Almarssad Pro Player Database</title>
 <meta charset="utf-8" />
 <style>
 .username.ng-valid {
@@ -36,8 +36,8 @@
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/service/user_service.js"></script>
 <script type="text/javascript" src="js/controller/user_controller.js"></script>
-
 </head>
+<div id="headerLogo"></div>
 <body class="ng-cloak">
 	<div class="generic-container" ng-controller="UserController as ctrl">
 		<div class="panel panel-default">
@@ -76,7 +76,43 @@
 							</div>
 						</div>
 					</div>
-
+										
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Birthplace</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.player.birthPlace"
+									name="position"
+									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
+									placeholder="Enter the birth Place" required />								
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Country of birth</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.player.birthcountry"
+									name="position"
+									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
+									placeholder="Enter the birth Place" required />								
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-lable" for="file">Nationality</label>
+							<div class="col-md-7">
+								<input type="text" ng-model="ctrl.player.nationality"
+									name="position"
+									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
+									placeholder="Enter the Nationality" required />								
+							</div>
+						</div>
+					</div>
+					
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label class="col-md-2 control-lable" for="file">Position</label>
@@ -97,30 +133,6 @@
 									name="position"
 									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
 									placeholder="Enter the actual club" required />							
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="file">Birthplace</label>
-							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.player.birthPlace"
-									name="position"
-									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
-									placeholder="Enter the birth Place" required />								
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label class="col-md-2 control-lable" for="file">Nationality</label>
-							<div class="col-md-7">
-								<input type="text" ng-model="ctrl.player.nationality"
-									name="position"
-									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
-									placeholder="Enter the Nationality" required />								
 							</div>
 						</div>
 					</div>
@@ -154,6 +166,7 @@
 							<th>position</th>
 							<th>Actuel Club</th>
 							<th>Birthplace</th>
+							<th>Country of birth</th>
 							<th>Nationality</th>
 							<th width="20%"></th>
 						</tr>
@@ -166,12 +179,15 @@
 							<td><span ng-bind="u.position"></span></td>
 							<td><span ng-bind="u.nowClub"></span></td>
 							<td><span ng-bind="u.birthPlace"></span></td>
+							<td><span ng-bind="u.birthCountry"></span></td>
 							<td><span ng-bind="u.nationality"></span></td>
 							<td>
 								<button type="button" ng-click="ctrl.edit(u.id)"
-									class="btn btn-success custom-width">Edit</button>
+									class="btn btn-warning custom-width">Edit</button>
 									<button type="submit" ng-click="ctrl.remove(u.id)"
 										class="btn btn-danger custom-width">Remove</button>
+									<button type="submit" ng-click="ctrl.approve(u.id)"
+										class="btn btn-success custom-width">Approve</button>
 							</td>
 						</tr>
 					</tbody>

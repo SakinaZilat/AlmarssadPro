@@ -1,6 +1,14 @@
+#headerLogo {
+  width:100%;
+  margin: auto;
+  height: 137px;
+  background-image:url("img/HeaderpageV2.jpg");
+  
+}
 body, #mainWrapper {
 	height: 70%;
 	background-color:rgb(245, 245, 245);
+	background-image:url("img/sports_bg.jpg");
 }
 
 body, .form-control{
@@ -27,9 +35,7 @@ body, .form-control{
 
 .generic-container {
   width:80%;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin: auto;
   padding: 20px;
   background-color: #EAE7E7;
   border: 1px solid #ddd;

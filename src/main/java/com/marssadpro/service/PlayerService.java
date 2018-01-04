@@ -69,6 +69,10 @@ public class PlayerService
 	{
 		return this.playerRepository.findByLastNameAndFirstName(lastName, firstName);
 	}
+
+	public List<Player> findPlayersByClubCountry(String clubCountry) {
+		return this.playerRepository.findByClubCountry(clubCountry);
+	}
 	
 	//	public Player add(Player player)
 	//	{
