@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.marssadpro.domain.Player;
@@ -19,13 +20,15 @@ public class PlayerService
 {
 	
 	private final static Logger LOGGER = LoggerFactory.getLogger(PlayerService.class);
-	
 	@Autowired
 	private PlayerRepository playerRepository;
 	
 	public Collection<Player> findAllPlayers()
 	{
-		return playerRepository.findAll();
+		Collection<Player> foundPlayers = playerRepository.findAll();
+		
+		return foundPlayers;
+		
 	}
 	
 	public Player findPlayerById(Long playerId)
@@ -34,6 +37,7 @@ public class PlayerService
 		return player.orElseThrow(() -> new PlayerNotFoundException(playerId));
 	}
 	
+	@Transactional
 	public Player createPlayer(Player player)
 	{
 		return playerRepository.save(player);
@@ -41,7 +45,7 @@ public class PlayerService
 	
 	public void deletePlayer(Long playerId)
 	{
-		 playerRepository.delete(playerId);
+		playerRepository.delete(playerId);
 		
 	}
 	
