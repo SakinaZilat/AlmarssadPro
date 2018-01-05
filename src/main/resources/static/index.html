@@ -39,7 +39,7 @@
 			</div>
 			<div class="formcontainer"
 				style="height: 100%; width: 100%; display: inline-flex">
-				<div style="width: 50%;">
+				<div style="width: 100%;">
 					<form ng-submit="ctrl.submit()" name="myForm"
 						class="form-horizontal">
 						<input type="hidden" ng-model="ctrl.player.id" />
@@ -242,7 +242,7 @@
 										class="btn btn-warning custom-width">Edit</button>
 									<button type="submit" ng-click="ctrl.remove(u.id)"
 										class="btn btn-danger custom-width">Remove</button>
-									<button type="submit" ng-click="ctrl.approve(u.id)"
+									<button type="submit" ng-disabled="u.approved" ng-click="ctrl.approve(u.id)"
 										class="btn btn-success custom-width">Approve</button>
 								</td>
 							</tr>
