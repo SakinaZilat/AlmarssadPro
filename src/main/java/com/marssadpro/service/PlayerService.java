@@ -1,6 +1,10 @@
 package com.marssadpro.service;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +44,25 @@ public class PlayerService
 	@Transactional
 	public Player createPlayer(Player player)
 	{
+		updateData(player);
 		return playerRepository.save(player);
+	}
+	
+	private void updateData(Player player)
+	{
+		if (player.getRegistredDate() == null)
+		{
+			player.setRegistredDate(new Date());
+		}
+		if (player.getAge() == null)
+		{
+			LocalDate bday = player.getBirthDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			LocalDate today = LocalDate.now();
+			Period age = Period.between(bday, today);
+			int years = age.getYears();
+			
+			player.setAge(Math.toIntExact(years));
+		}
 	}
 	
 	public void deletePlayer(Long playerId)
@@ -55,6 +77,8 @@ public class PlayerService
 		Player playerFromDB = findPlayerById(playerId);
 		if (playerFromDB.getId() != 0)
 		{
+			updateData(player);
+			
 			return playerRepository.save(player);
 		}
 		else

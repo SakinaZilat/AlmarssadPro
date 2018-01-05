@@ -4,43 +4,6 @@
 <head>
 <title>AngularJS</title>
 <meta charset="utf-8" />
-<style>
-.firstName.ng-valid>.lastName.ng-valid 
-.age.ng-valid>.birthPlace.ng-valid
- .nowClub.ng-valid>.registredDate.ng-valid
- .approved.ng-valid>.birthDate.ng-valid>.nationality.ng-valid {
-	background-color: lightgreen;
-}
-
-.firstName.ng-dirty.ng-invalid-required {
-	background-color: red;
-}
-
-.firstName.ng-dirty.ng-invalid-minlength {
-	background-color: yellow;
-}
-
-.position.ng-valid {
-	background-color: lightgreen;
-}
-
-.position.ng-dirty.ng-invalid-required {
-	background-color: red;
-}
-
-.position.ng-dirty.ng-invalid-position {
-	background-color: yellow;
-}
-
-table .bilderrahmen-fixed {
-	height: 36px;
-	width: 28px;
-	min-height: 36px;
-	min-width: 28px;
-	max-height: 36px;
-	max-width: 28px;
-}
-</style>
 <link rel="stylesheet"
 	href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -73,136 +36,146 @@ table .bilderrahmen-fixed {
 			<div class="panel-heading">
 				<span class="lead">Player Registration Form </span>
 			</div>
-			<div class="formcontainer">
-				<form ng-submit="ctrl.submit()" name="myForm"
-					class="form-horizontal">
-					<input type="hidden" ng-model="ctrl.player.id" />
+			<div class="formcontainer"
+				style="height: 100%; width: 100%;display: inline-flex">
+				<div style="width: 50%;">
+					<form ng-submit="ctrl.submit()" name="myForm"
+						class="form-horizontal">
+						<input type="hidden" ng-model="ctrl.player.id" />
 
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">FirstName</label>
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">FirstName</label>
 
-						<div class="col-xs-4">
-							<input type="text" ng-model="ctrl.player.firstName"
-								name="firstName" class="firstName form-control input-sm"
-								placeholder="Enter the firstname" required ng-minlength="3" />
-							<div class="has-error" ng-show="myForm.$dirty">
-								<span ng-show="myForm.firstName.$error.required">This is
-									a required field</span> <span
-									ng-show="myForm.firstName.$error.minlength">Minimum
-									length required is 3</span> <span ng-show="myForm.firstName.$invalid">This
-									field is invalid </span>
+							<div class="col-xs-4">
+								<input type="text" ng-model="ctrl.player.firstName"
+									name="firstName" class="firstName form-control input-sm"
+									placeholder="Enter the firstname" required ng-minlength="3" />
+								<div class="has-error" ng-show="myForm.$dirty">
+									<span ng-show="myForm.firstName.$error.required">This is
+										a required field</span> <span
+										ng-show="myForm.firstName.$error.minlength">Minimum
+										length required is 3</span> <span ng-show="myForm.firstName.$invalid">This
+										field is invalid </span>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">LastName</label>
 
-						<div class="col-xs-4">
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">LastName</label>
 
-							<input type="text" ng-model="ctrl.player.lastName"
-								name="lastName" class="lastName form-control input-sm" required
-								placeholder="Enter the lastName" />
+							<div class="col-xs-4">
+
+								<input type="text" ng-model="ctrl.player.lastName"
+									name="lastName" class="lastName form-control input-sm" required
+									placeholder="Enter the lastName" />
+							</div>
 						</div>
-					</div>
 
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">Age</label>
-						<div class="col-xs-4">
-							<input type="number" ng-model="ctrl.player.age" name="age"
-								class="age form-control input-sm" required
-								placeholder="Enter the age" />
+						<!-- 					<div class="form-group clearfix"> -->
+						<!-- 						<label class="col-sm-3 control-label">Age</label> -->
+						<!-- 						<div class="col-xs-4"> -->
+						<!-- 							<input type="number" ng-model="ctrl.player.age" name="age" -->
+						<!-- 								class="age form-control input-sm" required -->
+						<!-- 								placeholder="Enter the age" /> -->
+						<!-- 						</div> -->
+						<!-- 					</div> -->
+
+
+						<div class="form-group clearfix" ng-controller="datesControllers">
+							<label class="col-sm-3 control-label">Birthdate</label>
+							<div class="col-xs-4">
+								<p class="input-group">
+									<input type="text" class="birthDate form-control"
+										name="birthDate" uib-datepicker-popup
+										ng-model="ctrl.player.birthDate" is-open="popup2.opened"
+										datepicker-options="dateOptions" ng-required="true" required
+										close-text="Close" placeholder="Enter the birth date" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="open2()">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
 						</div>
-					</div>
-
-
-					<div class="form-group clearfix" ng-controller="datesControllers">
-						<label class="col-sm-3 control-label">Birthdate</label>
-						<div class="col-xs-4">
-							<p class="input-group">
-								<input type="text" class="birthDate form-control"
-									name="birthDate" uib-datepicker-popup
-									ng-model="ctrl.player.birthDate" is-open="popup2.opened"
-									datepicker-options="dateOptions" ng-required="true" required
-									close-text="Close" placeholder="Enter the birth date" /> <span
-									class="input-group-btn">
-									<button type="button" class="btn btn-default"
-										ng-click="open2()">
-										<i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-							</p>
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">Birthplace</label>
+							<div class="col-xs-4">
+								<input type="text" ng-model="ctrl.player.birthPlace"
+									name="birthPlace" class="birthPlace form-control "
+									placeholder="Enter the birth Place" required />
+							</div>
 						</div>
-					</div>
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">Birthplace</label>
-						<div class="col-xs-4">
-							<input type="text" ng-model="ctrl.player.birthPlace"
-								name="birthPlace" class="birthPlace form-control "
-								placeholder="Enter the birth Place" required />
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">Nationality</label>
+							<div class="col-xs-4">
+								<input type="text" ng-model="ctrl.player.nationality"
+									name="nationality" class="nationality form-control "
+									placeholder="Enter the Nationality" required />
+							</div>
 						</div>
-					</div>
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">Nationality</label>
-						<div class="col-xs-4">
-							<input type="text" ng-model="ctrl.player.nationality"
-								name="nationality" class="nationality form-control "
-								placeholder="Enter the Nationality" required />
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">Position</label>
+
+							<div class="col-xs-4">
+
+								<input type="text" ng-model="ctrl.player.position"
+									name="position" class="position form-control "
+									placeholder="Enter the position" required />
+							</div>
 						</div>
-					</div>
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">Position</label>
 
-						<div class="col-xs-4">
-
-							<input type="text" ng-model="ctrl.player.position"
-								name="position" class="position form-control "
-								placeholder="Enter the position" required />
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">Club</label>
+							<div class="col-xs-4">
+								<input type="text" ng-model="ctrl.player.nowClub" name="nowClub"
+									class="nowClub form-control "
+									placeholder="Enter the actual club" required />
+							</div>
 						</div>
-					</div>
 
-					<div class="form-group clearfix">
-						<label class="col-sm-3 control-label">Club</label>
-						<div class="col-xs-4">
-							<input type="text" ng-model="ctrl.player.nowClub" name="nowClub"
-								class="nowClub form-control "
-								placeholder="Enter the actual club" required />
+
+						<!-- 					<div class="form-group clearfix" ng-controller="datesControllers"> -->
+						<!-- 						<label class="col-sm-3 control-label">Registreddate</label> -->
+						<!-- 						<div class="col-xs-4"> -->
+						<!-- 							<p class="input-group"> -->
+						<!-- 								<input type="text" class="birthDate form-control" -->
+						<!-- 									name="registredDate" uib-datepicker-popup -->
+						<!-- 									ng-model="ctrl.player.registredDate" is-open="popup2.opened" -->
+						<!-- 									datepicker-options="dateOptions" ng-required="true" required -->
+						<!-- 									close-text="Close" placeholder="Enter the birth date" /> <span -->
+						<!-- 									class="input-group-btn"> -->
+						<!-- 									<button type="button" class="btn btn-default" -->
+						<!-- 										ng-click="open2()"> -->
+						<!-- 										<i class="glyphicon glyphicon-calendar"></i> -->
+						<!-- 									</button> -->
+						<!-- 								</span> -->
+						<!-- 							</p> -->
+						<!-- 						</div> -->
+						<!-- 					</div> -->
+
+
+
+						<div class="row">
+							<div class="form-actions floatRight">
+								<input type="submit"
+									value="{{!ctrl.player.id ? 'Add' : 'Update'}}"
+									class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
+								<button type="button" ng-click="ctrl.reset()"
+									class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
+									Form</button>
+							</div>
 						</div>
+					</form>
+				</div>
+				<div style="width: 30%;">
+					<div class="col-xs-4" style="">
+						<a href="#"> <img class="bilderrahmen-form"
+							ng-src="img/{{ctrl.player.nationality}}.png" /></a>
 					</div>
-
-
-					<!-- 					<div class="form-group clearfix" ng-controller="datesControllers"> -->
-					<!-- 						<label class="col-sm-3 control-label">Registreddate</label> -->
-					<!-- 						<div class="col-xs-4"> -->
-					<!-- 							<p class="input-group"> -->
-					<!-- 								<input type="text" class="birthDate form-control" -->
-					<!-- 									name="registredDate" uib-datepicker-popup -->
-					<!-- 									ng-model="ctrl.player.registredDate" is-open="popup2.opened" -->
-					<!-- 									datepicker-options="dateOptions" ng-required="true" required -->
-					<!-- 									close-text="Close" placeholder="Enter the birth date" /> <span -->
-					<!-- 									class="input-group-btn"> -->
-					<!-- 									<button type="button" class="btn btn-default" -->
-					<!-- 										ng-click="open2()"> -->
-					<!-- 										<i class="glyphicon glyphicon-calendar"></i> -->
-					<!-- 									</button> -->
-					<!-- 								</span> -->
-					<!-- 							</p> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
-
-
-
-					<div class="row">
-						<div class="form-actions floatRight">
-							<input type="submit"
-								value="{{!ctrl.player.id ? 'Add' : 'Update'}}"
-								class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid">
-							<button type="button" ng-click="ctrl.reset()"
-								class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset
-								Form</button>
-						</div>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -227,7 +200,6 @@ table .bilderrahmen-fixed {
 						<thead class="theadClass">
 							<tr>
 								<th>Image</th>
-								<th>Registreddate</th>
 								<th>Name</th>
 								<th>LastName</th>
 								<th>Age</th>
@@ -242,10 +214,9 @@ table .bilderrahmen-fixed {
 						<tbody>
 							<tr ng-repeat="u in ctrl.players | filter:searchString">
 
-								<td><a href="#"> <img class="bilderrahmen-fixed"
-										ng-src="https://tmssl.akamaized.net//images/portrait/header/45124-1437471177.jpg" /></a></td>
+								<td><a href="#"> <img class="bilderrahmen-table"
+										ng-src="img/{{u.nationality}}.png" /></a></td>
 
-								<td>{{u.registredDate | date : 'yyyy-MM-d'}}</td>
 								<td><span ng-bind="u.firstName"></span></td>
 								<td><span ng-bind="u.lastName"></span></td>
 								<td><span ng-bind="u.age"></span></td>
@@ -266,6 +237,7 @@ table .bilderrahmen-fixed {
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 
 

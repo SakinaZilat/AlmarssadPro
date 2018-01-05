@@ -3,18 +3,13 @@ package com.marssadpro.domain;
 import java.util.Arrays;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity
-@Table(name = "Player_Image")
+//@Entity
+//@Table(name = "Player_Image")
 public class PlayerImage
 {
 	
@@ -30,10 +25,10 @@ public class PlayerImage
 	@Lob
 	private byte[] fileData;
 	
-	@JsonIgnore
-	@OneToOne(mappedBy = "playerImage")
-	private Player player;
-	
+//	@JsonIgnore
+//	@OneToOne(mappedBy = "playerImage")
+//	private Player player;
+//	
 	public PlayerImage()
 	{
 	}
@@ -68,15 +63,15 @@ public class PlayerImage
 		this.fileData = fileData;
 	}
 	
-	public Player getPlayer()
-	{
-		return player;
-	}
-	
-	public void setPlayer(Player player)
-	{
-		this.player = player;
-	}
+//	public Player getPlayer()
+//	{
+//		return player;
+//	}
+//	
+//	public void setPlayer(Player player)
+//	{
+//		this.player = player;
+//	}
 	
 	@Override
 	public int hashCode()
@@ -86,7 +81,6 @@ public class PlayerImage
 		result = prime * result + Arrays.hashCode(fileData);
 		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
-		result = prime * result + ((player == null) ? 0 : player.hashCode());
 		return result;
 	}
 	
@@ -110,13 +104,6 @@ public class PlayerImage
 		else if (!fileName.equals(other.fileName))
 			return false;
 		if (id != other.id)
-			return false;
-		if (player == null)
-		{
-			if (other.player != null)
-				return false;
-		}
-		else if (!player.equals(other.player))
 			return false;
 		return true;
 	}

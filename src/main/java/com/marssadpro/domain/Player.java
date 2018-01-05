@@ -2,22 +2,16 @@ package com.marssadpro.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by zilat on 31.05.2017.
@@ -57,7 +51,7 @@ public class Player
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date birthDate;
 	
-	@Column(name = "registredDate", nullable = true)
+	@Column(name = "registredDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registredDate;
 	
@@ -65,21 +59,20 @@ public class Player
 	@Type(type = "yes_no")
 	private Boolean approved;
 	
-	@JoinColumn(name = "imageId", nullable = true)
-	@OneToOne(cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
-	private PlayerImage playerImage;
+	//	@JoinColumn(name = "imageId", nullable = true)
+	//	@OneToOne(cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
+	//	private PlayerImage playerImage;
 	
 	public Player()
 	{
 	}
 	
-
-	public Player(String firstName, String lastName, String email) {
+	public Player(String firstName, String lastName, String email)
+	{
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.registredDate = new Date();
 	}
-
 	
 	public long getId()
 	{
@@ -111,19 +104,15 @@ public class Player
 		this.lastName = lastName;
 	}
 	
-	//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date getRegistredDate()
 	{
+		
 		return registredDate;
 	}
 	
-	//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public void setRegistredDate(Date registredDate)
 	{
-		if (registredDate == null)
-		{
-			this.registredDate = new Date();
-		}
+			this.registredDate = registredDate;
 	}
 	
 	public String getPosition()
@@ -173,7 +162,7 @@ public class Player
 	
 	public void setAge(Integer age)
 	{
-		this.age = age;
+			this.age = age;
 	}
 	
 	public Date getBirthDate()
@@ -196,14 +185,14 @@ public class Player
 		this.approved = approved;
 	}
 	
-	public PlayerImage getPlayerImage()
-	{
-		return playerImage;
-	}
-	
-	public void setPlayerImage(PlayerImage playerImage)
-	{
-		this.playerImage = playerImage;
-	}
+	//	public PlayerImage getPlayerImage()
+	//	{
+	//		return playerImage;
+	//	}
+	//	
+	//	public void setPlayerImage(PlayerImage playerImage)
+	//	{
+	//		this.playerImage = playerImage;
+	//	}
 	
 }

@@ -32,6 +32,7 @@ body, .form-control{
   background-color: #EAE7E7;
   border: 0px solid #ddd;
   border-radius: 4px;
+  
 }
 
 .custom-width {
@@ -73,3 +74,48 @@ body, .form-control{
 	outline: none;
 	text-indent: 40px;
 }
+
+
+
+.firstName.ng-valid>.lastName.ng-valid 
+.age.ng-valid>.birthPlace.ng-valid
+ .nowClub.ng-valid>.registredDate.ng-valid
+ .approved.ng-valid>.birthDate.ng-valid>.nationality.ng-valid {
+	background-color: lightgreen;
+}
+
+.firstName.ng-dirty.ng-invalid-required {
+	background-color: red;
+}
+
+.firstName.ng-dirty.ng-invalid-minlength {
+	background-color: yellow;
+}
+
+.position.ng-valid {
+	background-color: lightgreen;
+}
+
+.position.ng-dirty.ng-invalid-required {
+	background-color: red;
+}
+
+.position.ng-dirty.ng-invalid-position {
+	background-color: yellow;
+}
+
+.bilderrahmen-table {
+	height: 36px;
+	width: 28px;
+	min-height: 36px;
+	min-width: 28px;
+	max-height: 36px;
+	max-width: 28px;
+}
+
+.bilderrahmen-form {
+	padding: 0;
+	width: 111px;
+	height: 148px;
+	border: 2px solid #E6E6E6;
+
