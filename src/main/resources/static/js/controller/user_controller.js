@@ -1,13 +1,14 @@
 //angular.module('myApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 angular.module('myApp').controller('UserController', ['$scope', 'UserService', function($scope, UserService) {
     var self = this;
-    self.player={id:null,firstName:'',lastName:'',position:'',birthPlace:'',nationality:'',nowClub:'',birthDate:'',approved:''};
+     self.player={id:null,firstName:'',lastName:'',position:'',birthPlace:'',birthCountry:'',nationality:'',nowClub:'',clubCountry:'',age:'',birthDate:'',registredDate:'',approved:''};
     self.players=[];
     
     self.submit = submit;
     self.edit = edit;
     self.remove = remove;
-    
+    self.reset = reset;
+    self.approve=approve;
 
     fetchAllUsers();
 
@@ -53,6 +54,18 @@ angular.module('myApp').controller('UserController', ['$scope', 'UserService', f
             }
         );
     }
+    
+
+    
+    function approveUser(user, id){
+        UserService.approveUser(user, id)
+            .then(
+            fetchAllUsers,
+            function(errResponse){
+                console.error('Error while updating User');
+            }
+        );
+    }
 
     function submit() {
         if(self.player.id===null){
@@ -84,10 +97,21 @@ angular.module('myApp').controller('UserController', ['$scope', 'UserService', f
         fetchAllUsers();
 
     }
+    
+    function approve(id){
+        console.log('approved von Admin', id);
+        if(self.player.id === id) {
+            reset();
+        }
+        edit(id);
+        self.player.approved=true;
+        console.log("approve",self.player);
+        approveUser(self.player,id);
+    }
 
 
     function reset(){
-        self.player={id:null,firstName:'',lastName:'',position:'',birthPlace:'',nationality:'',nowClub:'',birthDate:'',approved:''};
+        self.player={id:null,firstName:'',lastName:'',position:'',birthPlace:'',birthCountry:'',nationality:'',nowClub:'',clubCountry:'',age:'',birthDate:'',registredDate:'',approved:''};
         $scope.myForm.$setPristine(); //reset Form
     }
 

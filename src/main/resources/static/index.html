@@ -2,7 +2,7 @@
 <html ng-app="myApp">
 
 <head>
-<title>AngularJS</title>
+<title>Almarssad Pro Player Database</title>
 <meta charset="utf-8" />
 <link rel="stylesheet"
 	href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -30,6 +30,7 @@
 
 
 </head>
+<div id="headerLogo"></div>
 <body class="ng-cloak">
 	<div class="generic-container" ng-controller="UserController as ctrl">
 		<div class="panel panel-default">
@@ -170,7 +171,7 @@
 						</div>
 					</form>
 				</div>
-				<div style="width: 30%;">
+				<div style="width: 30%;" ng-show="ctrl.player.id">
 					<div class="col-xs-4" style="">
 						<a href="#"> <img class="bilderrahmen-form"
 							ng-src="img/{{ctrl.player.nationality}}.png" /></a>
@@ -227,9 +228,11 @@
 								<td><span ng-bind="u.nowClub"></span></td>
 								<td>
 									<button type="button" ng-click="ctrl.edit(u.id)"
-										class="btn btn-success custom-width">Edit</button>
+									class="btn btn-warning custom-width">Edit</button>
 									<button type="submit" ng-click="ctrl.remove(u.id)"
 										class="btn btn-danger custom-width">Remove</button>
+									<button type="submit" ng-click="ctrl.approve(u.id)"
+										class="btn btn-success custom-width">Approve</button>
 								</td>
 							</tr>
 						</tbody>

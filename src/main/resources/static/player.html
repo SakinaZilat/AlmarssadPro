@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+<title>Almarssad Pro Player Database</title>
+<meta charset="utf-8" />
+<style>
+.username.ng-valid {
+	background-color: lightgreen;
+}
+
+.username.ng-dirty.ng-invalid-required {
+	background-color: red;
+}
+
+.username.ng-dirty.ng-invalid-minlength {
+	background-color: yellow;
+}
+
+.position.ng-valid {
+	background-color: lightgreen;
+}
+
+.position.ng-dirty.ng-invalid-required {
+	background-color: red;
+}
+
+.position.ng-dirty.ng-invalid-position {
+	background-color: yellow;
+}
+</style>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+<link href="css/app.css" rel="stylesheet"></link>
+<script type="text/javascript"	src="js/libs/angular.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/service/user_service.js"></script>
+<script type="text/javascript" src="js/controller/user_controller.js"></script>
+
+</head>
+<div id="headerLogo"></div>
+<body class="ng-cloak">
+	<div class="generic-container" ng-controller="UserController as ctrl">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="lead">Player Search </span>
+			</div>			
+		</div>
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">
+				<span class="lead">List of Players </span>
+			</div>
+			<div class="tablecontainer">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>ID.</th>
+							<th>Name</th>
+							<th>LastName</th>
+							<th>position</th>
+							<th>Actuel Club</th>
+							<th>Birthplace</th>
+							<th>Country of birth</th>
+							<th>Nationality</th>							
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="u in ctrl.players">
+							<td><span ng-bind="u.id"></span></td>
+							<td><span ng-bind="u.firstName"></span></td>
+							<td><span ng-bind="u.lastName"></span></td>
+							<td><span ng-bind="u.position"></span></td>
+							<td><span ng-bind="u.nowClub"></span></td>
+							<td><span ng-bind="u.birthPlace"></span></td>
+							<td><span ng-bind="u.birthCountry"></span></td>
+							<td><span ng-bind="u.nationality"></span></td>							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+</html>

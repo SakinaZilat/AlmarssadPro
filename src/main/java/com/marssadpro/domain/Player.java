@@ -13,6 +13,10 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 /**
  * Created by zilat on 31.05.2017.
  */
@@ -38,30 +42,34 @@ public class Player
 	@Column(name = "birthPlace", length = 255, nullable = false)
 	private String birthPlace;
 	
+	@Column(name = "birthCountry", length = 255, nullable = true)
+	private String birthCountry;
+	
 	@Column(name = "nationality", length = 255, nullable = false)
 	private String nationality;
 	
 	@Column(name = "nowClub", length = 255, nullable = false)
 	private String nowClub;
 	
+	@Column(name = "clubCountry", length = 255, nullable = true)
+	private String clubCountry;
+	
 	@Column(name = "age", precision = 19)
 	private Integer age;
 	
-	@Column(name = "birthDate", nullable = false)
+	@Column(name = "birthDate", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date birthDate;
 	
-	@Column(name = "registredDate", nullable = false)
+	@Column(name = "registredDate", nullable = true)
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date registredDate;
 	
 	@Column(name = "approved")
 	@Type(type = "yes_no")
 	private Boolean approved;
-	
-	//	@JoinColumn(name = "imageId", nullable = true)
-	//	@OneToOne(cascade=CascadeType.ALL ,fetch=FetchType.EAGER)
-	//	private PlayerImage playerImage;
 	
 	public Player()
 	{
@@ -104,15 +112,17 @@ public class Player
 		this.lastName = lastName;
 	}
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public Date getRegistredDate()
 	{
 		
 		return registredDate;
 	}
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
 	public void setRegistredDate(Date registredDate)
 	{
-			this.registredDate = registredDate;
+		this.registredDate = registredDate;
 	}
 	
 	public String getPosition()
@@ -162,7 +172,7 @@ public class Player
 	
 	public void setAge(Integer age)
 	{
-			this.age = age;
+		this.age = age;
 	}
 	
 	public Date getBirthDate()
@@ -175,16 +185,6 @@ public class Player
 		this.birthDate = birthDate;
 	}
 	
-	public Boolean getApproved()
-	{
-		return approved;
-	}
-	
-	public void setApproved(Boolean approved)
-	{
-		this.approved = approved;
-	}
-	
 	//	public PlayerImage getPlayerImage()
 	//	{
 	//		return playerImage;
@@ -194,5 +194,34 @@ public class Player
 	//	{
 	//		this.playerImage = playerImage;
 	//	}
+	public String getBirthCountry()
+	{
+		return birthCountry;
+	}
+	
+	public void setBirthCountry(String birthCountry)
+	{
+		this.birthCountry = birthCountry;
+	}
+	
+	public String getClubCountry()
+	{
+		return clubCountry;
+	}
+	
+	public void setClubCountry(String clubCountry)
+	{
+		this.clubCountry = clubCountry;
+	}
+	
+	public Boolean getApproved()
+	{
+		return approved;
+	}
+	
+	public void setApproved(Boolean approved)
+	{
+		this.approved = approved;
+	}
 	
 }

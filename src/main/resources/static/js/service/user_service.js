@@ -6,7 +6,8 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function($http, $
         fetchAllUsers: fetchAllUsers,
         createUser: createUser,
         updateUser:updateUser,
-        deleteUser:deleteUser
+        deleteUser:deleteUser,
+        approveUser:approveUser
     };
 
     return factory;
@@ -73,5 +74,36 @@ angular.module('myApp').factory('UserService', ['$http', '$q', function($http, $
         );
         return deferred.promise;
     }
+    
+    function approveUser(user, id) {
+        var deferred = $q.defer();
+        $http.put(REST_SERVICE_URI+id, user)
+            .then(
+            function (response) {
+                deferred.resolve(response.data);
+            },
+            function(errResponse){
+                console.error('Error while updating User');
+                deferred.reject(errResponse);
+            }
+        );
+        return deferred.promise;
+    }
+    
+    
+//    function approveUser(id) {
+//        var deferred = $q.defer();
+//        $http.delete(REST_SERVICE_URI+id)
+//            .then(
+//            function (response) {
+//                deferred.resolve(response.data);
+//            },
+//            function(errResponse){
+//                console.error('Error while approving User');
+//                deferred.reject(errResponse);
+//            }
+//        );
+//        return deferred.promise;
+//    }
 
 }]);

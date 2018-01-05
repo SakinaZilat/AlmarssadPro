@@ -23,5 +23,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long>
 //	@Modifying
 	@Query("delete from Player p where p.id= ?1")
 	int deletePlayerById(Long id);
+
+	List<Player> findByClubCountry(String clubCountry);
 	
 }
