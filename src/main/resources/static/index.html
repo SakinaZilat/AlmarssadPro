@@ -242,7 +242,7 @@
 										class="btn btn-warning custom-width">Edit</button>
 									<button type="submit" ng-click="ctrl.remove(u.id)"
 										class="btn btn-danger custom-width">Remove</button>
-									<button type="submit" ng-click="ctrl.approve(u.id)"
+									<button type="submit" ng-disabled="u.approved" ng-click="ctrl.approve(u.id)"
 										class="btn btn-success custom-width">Approve</button>
 								</td>
 							</tr>

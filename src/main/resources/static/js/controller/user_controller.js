@@ -107,6 +107,7 @@ angular.module('myApp').controller('UserController', ['$scope', 'UserService', f
         self.player.approved=true;
         console.log("approve",self.player);
         approveUser(self.player,id);
+        reset();
     }
 
 
