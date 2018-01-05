@@ -38,7 +38,7 @@
 				<span class="lead">Player Registration Form </span>
 			</div>
 			<div class="formcontainer"
-				style="height: 100%; width: 100%;display: inline-flex">
+				style="height: 100%; width: 100%; display: inline-flex">
 				<div style="width: 50%;">
 					<form ng-submit="ctrl.submit()" name="myForm"
 						class="form-horizontal">
@@ -99,6 +99,17 @@
 										</button>
 									</span>
 								</p>
+							</div>
+						</div>
+
+						<div class="form-group clearfix">
+							<label class="col-sm-3 control-label">Country of birth</label>
+							<div class="col-xs-4">
+
+								<input type="text" ng-model="ctrl.player.birthCountry"
+									name="position"
+									class="position form-control inpuSpring4MVCAngularJSExamplet-sm"
+									placeholder="Enter the birth Country" required />
 							</div>
 						</div>
 						<div class="form-group clearfix">
@@ -205,7 +216,7 @@
 								<th>LastName</th>
 								<th>Age</th>
 								<th>Birthdate</th>
-								<th>Birthplace</th>
+								<th>Country of birth</th>
 								<th>Nationality</th>
 								<th>position</th>
 								<th>Actuel Club</th>
@@ -222,13 +233,13 @@
 								<td><span ng-bind="u.lastName"></span></td>
 								<td><span ng-bind="u.age"></span></td>
 								<td>{{u.birthDate | date : 'yyyy-MM-d'}}</td>
-								<td><span ng-bind="u.birthPlace"></span></td>
+								<td><span ng-bind="u.birthCountry"></span></td>
 								<td><span ng-bind="u.nationality"></span></td>
 								<td><span ng-bind="u.position"></span></td>
 								<td><span ng-bind="u.nowClub"></span></td>
 								<td>
 									<button type="button" ng-click="ctrl.edit(u.id)"
-									class="btn btn-warning custom-width">Edit</button>
+										class="btn btn-warning custom-width">Edit</button>
 									<button type="submit" ng-click="ctrl.remove(u.id)"
 										class="btn btn-danger custom-width">Remove</button>
 									<button type="submit" ng-click="ctrl.approve(u.id)"

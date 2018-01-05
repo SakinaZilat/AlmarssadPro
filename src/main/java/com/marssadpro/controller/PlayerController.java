@@ -140,5 +140,10 @@ public class PlayerController
 		return new ResponseEntity<>(playerList, HttpStatus.OK);
 	}
 	
-
+	@GetMapping(value = "/players/searchByClubCountry/{clubCountry}")
+	public ResponseEntity<List<Player>> getPlayersByClubCountry(@ApiParam(name = "version", defaultValue = "v1") @PathVariable("version") String version, @ApiParam(name = "clubCountry") @PathVariable("clubCountry") String clubCountry)
+	{
+		List<Player> playerList = playerService.findPlayersByClubCountry(clubCountry);
+		return new ResponseEntity<>(playerList, HttpStatus.OK);
+	}
 }
