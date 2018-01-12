@@ -9,3 +9,4 @@
 /.directory
 /bin/
 /almarssadpro.log
+**/node_modules/
